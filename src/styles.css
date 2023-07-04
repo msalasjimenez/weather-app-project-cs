@@ -4,32 +4,26 @@ body {
   background-size: 100%;
   font-family: "Poppins", sans-serif;
 }
+
 h1,
-h4,
-h5 {
+h4 {
   font-family: "Roboto", sans-serif;
-  margin: 10px 0;
 }
+
 h1 {
   color: #2d3a4d;
-  text-align: left;
 }
-h4 {
-  text-align: center;
-}
-h5 {
-  text-align: center;
-  position: relative;
-  bottom: -30px;
-}
+
 ul {
-  list-style: none;
+  margin: 0;
   padding: 0;
 }
+
 strong {
   font-weight: 700;
   color: #564205;
 }
+
 a {
   color: #564205;
   text-decoration: none;
@@ -40,21 +34,9 @@ a:hover {
   text-decoration: underline;
 }
 
-.app {
+.weather-app {
   padding: 15px;
   margin: 20px;
-}
-
-.app-title {
-  text-align: center;
-  color: black;
-  display: block;
-  margin: 0 auto;
-  padding: 5px;
-  max-width: 400px;
-  background: rgb(255, 255, 255, 0.5);
-  border: 3px solid silver;
-  border-radius: 10px;
 }
 
 .search-box {
@@ -70,56 +52,33 @@ a:hover {
 
 .temperature {
   color: #564205;
-  margin-top: 30px;
   font-size: 80px;
   font-weight: 500;
   position: relative;
-  top: -36px;
-  right: -60px;
+  top: -70px;
+  right: -52px;
 }
 
 .weather-icon {
   position: relative;
-  right: 8px;
-  top: 53px;
+  right: 45px;
+  top: 37px;
+  margin-right: 38px;
 }
+
 .unit {
   color: #564205;
   font-size: 21px;
   font-weight: 400;
   position: relative;
-  top: -77px;
-  left: 55px;
+  top: -112px;
+  left: 53px;
 }
 
-.temperature-max-min .temp-min {
-  opacity: 0.7;
-}
-
-.card-right {
-  border: 1px solid silver;
-  border-radius: 10px;
-  transition: all 200ms ease-in-out;
-}
-
-.card-right:hover {
-  background: rgba(192, 192, 192, 0.4);
-  box-shadow: 0px 0px 4px grey;
-  cursor: pointer;
-}
-
-.lasttemperature,
-.lastunit {
-  font-size: 20px;
-}
 .ms {
   color: black;
-  font-weight: 600;
   font-family: monospace;
-  opacity: 0.7;
-  margin: 20px auto;
   padding: 5px;
-  width: 300px;
   background: rgb(255, 255, 255, 0.5);
   border: 3px solid silver;
   border-radius: 10px;
