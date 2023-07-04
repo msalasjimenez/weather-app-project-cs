@@ -89,6 +89,16 @@ a:hover {
   left: 53px;
 }
 
+.temperature-container .active {
+  color: #2d3a4d;
+  cursor: default;
+  font-weight: bold;
+}
+
+.temperature-container .active:hover {
+  text-decoration: none;
+}
+
 .ms {
   color: black;
   font-family: monospace;
