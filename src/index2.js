@@ -1,4 +1,5 @@
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -6,17 +7,17 @@ function formatDate(date) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
 
   let currentday = days[date.getDay()];
 
   let currenthour = date.getHours();
-  let currentminutes = date.getMinutes();
-
   if (currenthour < 10) {
     currenthour = `0${currenthour}`;
   }
+
+  let currentminutes = date.getMinutes();
   if (currentminutes < 10) {
     currentminutes = `0${currentminutes}`;
   }
@@ -28,21 +29,32 @@ function formatDate(date) {
 
 function displayWeatherCondition(response) {
   let cityresult = document.querySelector("#city");
-  cityresult.innerHTML = response.data.name;
   let citytemp = document.querySelector("#temp");
-  citytemp.innerHTML = Math.round(response.data.main.temp);
-  let humidity = document.querySelector("#humidity");
-  humidity.innerHTML = `${response.data.main.humidity}%`;
-  let wind = document.querySelector("#wind");
-  wind.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
   let description = document.querySelector("#description");
-  description.innerHTML = response.data.weather[0].main;
+  let humidity = document.querySelector("#humidity");
+  let wind = document.querySelector("#wind");
+  let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
+
+  celsiustemperature = response.data.temperature.current;
+
+  citytemp.innerHTML = Math.round(celsiustemperature);
+  cityresult.innerHTML = response.data.city;
+  description.innerHTML = response.data.condition.description;
+  humidity.innerHTML = `${response.data.temperature.humidity}%`;
+  wind.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
+  iconElement.setAttribute("alt", response.data.condition.description);
 }
 
 function searchcity(city) {
-  let apiKey = "4b0822e03e5faaecb402f20ed51f6384";
+  let apiKey = "4031af3089baee44t6720aff433o521e";
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(displayWeatherCondition);
 }
@@ -50,34 +62,10 @@ function searchcity(city) {
 function search(event) {
   event.preventDefault();
   let searchinput = document.querySelector("#search-city-input");
-  let cityresult = document.querySelector("#city");
-  cityresult.innerHTML = searchinput.value;
-  searchcity(city);
+  searchcity(searchinput.value);
 }
-
-function searchposition(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let apiKey = "4b0822e03e5faaecb402f20ed51f6384";
-  let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-
-  axios.get(apiUrl).then(displayWeatherCondition);
-}
-
-function getCurrentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchposition);
-}
-
-let now = new Date();
-let dayandtime = document.querySelector("#date");
-dayandtime.innerHTML = formatDate(now);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
-
-let currentlocationbutton = document.querySelector("#current-location-button");
-currentlocationbutton.addEventListener("click", getCurrentLocation);
 
 searchcity("Cartagena de Indias");
