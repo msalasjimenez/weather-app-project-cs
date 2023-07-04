@@ -21,16 +21,13 @@
     <title>Weather project</title>
   </head>
   <body>
-    <div class="app">
-      <div class="container">
-        <header>
-          <h1 class="app-title">🍃Weather App</h1>
-        </header>
-        <br />
-        <div class="row">
-          <div class="col-7">
-            <div class="card">
-              <div class="card-body">
+    <div class="container">
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <div class="row">
+            <div class="col-11 w-80">
+              <div class="card">
+                <div class="card-body">
                 <form class="search-box" id="search-form">
                   <div class="row">
                     <div class="col-7">
@@ -38,7 +35,6 @@
                         type="search"
                         placeholder="Search a city"
                         class="form-control"
-                        autofocus="on"
                         autocomplete="off"
                         id="search-city-input"
                       />
@@ -50,14 +46,6 @@
                         value="Search"
                       />
                     </div>
-                    <div class="col-3 w-auto">
-                      <input
-                        type="submit"
-                        class="btn btn-success shadow-sm"
-                        value="Current"
-                        id="current-location-button"
-                      />
-                    </div>
                   </div>
                 </form>
                 <br />
@@ -66,194 +54,33 @@
                     <div class="col-sm-7">
                       <h1 id="city"></h1>
                       <ul>
-                        <li>
+                        <li>Last updated:<br />
                           <span id="date"></span>
                           <strong id="description"></strong>
                         </li>
-                        <li>
-                          <span
-                            >💧 Humidity: <strong id="humidity"></strong
-                          ></span>
-                        </li>
-                        <li>
-                          <span>🎐 Wind: <strong id="wind"></strong></span>
-                        </li>
-                      </ul>
+                        <li>💧 Humidity: <strong id="humidity"></strong></li>
+                          <li>🎐 Wind: <strong id="wind"></strong></li>
+                        </ul>
                     </div>
                     <div class="col-sm-4 mb-3 mb-sm-0">
                       <div class="temperature-container">
-                        <div>
-                          <div>
+                        <div class="temp-result">
+                          <div class="temp-icon">
                             <img
-                              src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
-                              alt=""
-                              class="weather-icon"
-                            />
+                                src=""
+                                alt=""
+                                class="weather-icon"
+                                id="icon"
+                              />
                           </div>
                           <span class="temperature" id="temp"></span>
                           <span class="unit">
-                            <a id="celsiustemp">°C</a>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="weather-forescast row">
-                  <div class="col">
-                    <div class="forescast-day">
-                      <span>Sunday</span>
-                    </div>
-                    <img
-                      src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
-                      alt=""
-                    />
-                    <div class="temperature-max-min">
-                      <span class="temp-max">🌡Max:<strong>32°</strong></span>
-                      <br />
-                      <span class="temp-min">🌡Min:<strong>26°</strong></span>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="forescast-day">
-                      <span>Monday</span>
-                    </div>
-                    <img
-                      src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
-                      alt=""
-                    />
-                    <div class="temperature-max-min">
-                      <span class="temp-max">🌡Max:<strong>32°</strong></span>
-                      <br />
-                      <span class="temp-min">🌡Min:<strong>26°</strong></span>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="forescast-day">
-                      <span>Tuesday</span>
-                    </div>
-                    <img
-                      src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
-                      alt=""
-                    />
-                    <div class="temperature-max-min">
-                      <span class="temp-max">🌡Max:<strong>32°</strong></span>
-                      <br />
-                      <span class="temp-min">🌡Min:<strong>26°</strong></span>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="forescast-day">
-                      <span>Wednesday</span>
-                    </div>
-                    <img
-                      src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
-                      alt=""
-                    />
-                    <div class="temperature-max-min">
-                      <span class="temp-max">🌡Max:<strong>32°</strong></span>
-                      <br />
-                      <span class="temp-min">🌡Min:<strong>26°</strong></span>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="forescast-day">
-                      <span>Thursday</span>
-                    </div>
-                    <img
-                      src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
-                      alt=""
-                    />
-                    <div class="temperature-max-min">
-                      <span class="temp-max">🌡Max:<strong>32°</strong></span>
-                      <br />
-                      <span class="temp-min">🌡Min:<strong>26°</strong></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-5">
-            <div class="card">
-              <div class="card-body">
-                <h4>last city weather search</h4>
-                <div class="card-right">
-                  <div class="card-body">
-                    <div class="lastweathersearch">
-                      <div class="row">
-                        <div class="col">
-                          <h5>Medellin</h5>
-                        </div>
-                        <div class="col">
-                          <div class="lasttemperature-container">
-                            <div>
-                              <img
-                                src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
-                                alt=""
-                              />
-                              <span class="lasttemperature">28</span>
-                              <span class="lastunit">°C</span>
-                              <br />
-                              <span>Sunday 10:00 PM</span>
-                              <br />
-                              <span><strong>Partly cloudy</strong></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-right">
-                  <div class="card-body">
-                    <div class="lastweathersearch">
-                      <div class="row">
-                        <div class="col">
-                          <h5>Lisbon</h5>
-                        </div>
-                        <div class="col">
-                          <div class="lasttemperature-container">
-                            <div>
-                              <img
-                                src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
-                                alt=""
-                              />
-                              <span class="lasttemperature">28</span>
-                              <span class="lastunit">°C</span>
-                              <br />
-                              <span>Sunday 10:00 PM</span>
-                              <br />
-                              <span><strong>Partly cloudy</strong></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-right">
-                  <div class="card-body">
-                    <div class="lastweathersearch">
-                      <div class="row">
-                        <div class="col">
-                          <h5>Paris</h5>
-                        </div>
-                        <div class="col">
-                          <div class="lasttemperature-container">
-                            <div>
-                              <img
-                                src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
-                                alt=""
-                              />
-                              <span class="lasttemperature">28</span>
-                              <span class="lastunit">°C</span>
-                              <br />
-                              <span>Sunday 10:00 PM</span>
-                              <br />
-                              <span><strong>Partly cloudy</strong></span>
-                            </div>
-                          </div>
+                            <a href="#" id="celsius-link" class="active"
+                                >°C</a
+                              >
+                              |
+                              <a href="#" id="fahrenheit-link">°F</a>
+                            </span>
                         </div>
                       </div>
                     </div>
@@ -262,16 +89,13 @@
               </div>
             </div>
           </div>
-        </div>
-        <footer>
-          <p class="ms">
-            <a
-              href="https://github.com/msalasjimenez/weather-app-project-cs"
-              target="_blank"
-              >Open-source code</a
-            >,by María Salas
-          </p>
-        </footer>
+        <small class="ms">
+          <a
+            href="https://github.com/msalasjimenez/weather-app-project-cs"
+            target="_blank"
+            >Open-source code</a
+          >,by María Salas
+        </small>
       </div>
     </div>
     <script
