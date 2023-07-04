@@ -28,59 +28,61 @@
             <div class="col-11 w-80">
               <div class="card">
                 <div class="card-body">
-                <form class="search-box" id="search-form">
-                  <div class="row">
-                    <div class="col-7">
-                      <input
-                        type="search"
-                        placeholder="Search a city"
-                        class="form-control"
-                        autocomplete="off"
-                        id="search-city-input"
-                      />
+                  <form class="search-box" id="search-form">
+                    <div class="row">
+                      <div class="col-7">
+                        <input
+                          type="search"
+                          placeholder="Search a city"
+                          class="form-control"
+                          autocomplete="off"
+                          id="search-city-input"
+                        />
+                      </div>
+                      <div class="col-3 w-auto">
+                        <input
+                          type="submit"
+                          class="btn btn-primary shadow-sm"
+                          value="Search"
+                        />
+                      </div>
                     </div>
-                    <div class="col-3 w-auto">
-                      <input
-                        type="submit"
-                        class="btn btn-primary shadow-sm"
-                        value="Search"
-                      />
-                    </div>
-                  </div>
-                </form>
-                <br />
-                <div class="weather-result">
-                  <div class="row">
-                    <div class="col-sm-7">
-                      <h1 id="city"></h1>
-                      <ul>
-                        <li>Last updated:<br />
-                          <span id="date"></span>
-                          <strong id="description"></strong>
-                        </li>
-                        <li>💧 Humidity: <strong id="humidity"></strong></li>
+                  </form>
+                  <br />
+                  <div class="weather-result">
+                    <div class="row">
+                      <div class="col-sm-7">
+                        <h1 id="city"></h1>
+                        <ul>
+                          <li>
+                            Last updated:<br />
+                            <span id="date"></span>
+                            <strong id="description"></strong>
+                          </li>
+                          <li>💧 Humidity: <strong id="humidity"></strong></li>
                           <li>🎐 Wind: <strong id="wind"></strong></li>
                         </ul>
-                    </div>
-                    <div class="col-sm-4 mb-3 mb-sm-0">
-                      <div class="temperature-container">
-                        <div class="temp-result">
-                          <div class="temp-icon">
-                            <img
+                      </div>
+                      <div class="col-sm-4 mb-3 mb-sm-0">
+                        <div class="temperature-container">
+                          <div class="temp-result">
+                            <div class="temp-icon">
+                              <img
                                 src=""
                                 alt=""
                                 class="weather-icon"
                                 id="icon"
                               />
-                          </div>
-                          <span class="temperature" id="temp"></span>
-                          <span class="unit">
-                            <a href="#" id="celsius-link" class="active"
+                            </div>
+                            <span class="temperature" id="temp"></span>
+                            <span class="unit">
+                              <a href="#" id="celsius-link" class="active"
                                 >°C</a
                               >
                               |
                               <a href="#" id="fahrenheit-link">°F</a>
                             </span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -89,6 +91,7 @@
               </div>
             </div>
           </div>
+        </div>
         <small class="ms">
           <a
             href="https://github.com/msalasjimenez/weather-app-project-cs"
