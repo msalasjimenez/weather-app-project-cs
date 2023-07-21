@@ -27,34 +27,67 @@ function formatDate(timestamp) {
   return formatdates;
 }
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">
-                        <div class="forecast-day">${day}</div>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col">
+                        <div class="forecast-day">${formatDay(
+                          forecastDay.time
+                        )}</div>
                         <img
-                          src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
+                          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                            forecastDay.condition.icon
+                          }.png"
                           alt=""
                         />
                         <div class="temperature-max-min">
                           <span class="temp-max"
-                            >🌡Max:<strong>32°</strong></span
+                            >🌡Max:<strong>${Math.round(
+                              forecastDay.temperature.maximum
+                            )}°</strong></span
                           >
                           <br />
                           <span class="temp-min"
-                            >🌡Min:<strong>26°</strong></span
+                            >🌡Min:${Math.round(
+                              forecastDay.temperature.minimum
+                            )}°</strong></span
                           >
                         </div>
                       </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
 
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "4031af3089baee44t6720aff433o521e";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayWeatherCondition(response) {
@@ -79,6 +112,8 @@ function displayWeatherCondition(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   iconElement.setAttribute("alt", response.data.condition.description);
+
+  getForecast(response.data.coordinates);
 }
 
 function searchcity(city) {
@@ -124,4 +159,3 @@ let celsiuslink = document.querySelector("#celsius-link");
 celsiuslink.addEventListener("click", displaycelsiusTemperature);
 
 searchcity("Cartagena de Indias");
-displayForecast();
