@@ -89,16 +89,6 @@ a:hover {
   left: 53px;
 }
 
-.temperature-container .active {
-  color: #2d3a4d;
-  cursor: default;
-  font-weight: bold;
-}
-
-.temperature-container .active:hover {
-  text-decoration: none;
-}
-
 .temperature-max-min .temp-min {
   opacity: 0.7;
 }
