@@ -27,6 +27,36 @@ function formatDate(timestamp) {
   return formatdates;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+                        <div class="forecast-day">${day}</div>
+                        <img
+                          src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
+                          alt=""
+                        />
+                        <div class="temperature-max-min">
+                          <span class="temp-max"
+                            >🌡Max:<strong>32°</strong></span
+                          >
+                          <br />
+                          <span class="temp-min"
+                            >🌡Min:<strong>26°</strong></span
+                          >
+                        </div>
+                      </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayWeatherCondition(response) {
   let cityresult = document.querySelector("#city");
   let citytemp = document.querySelector("#temp");
@@ -94,3 +124,4 @@ let celsiuslink = document.querySelector("#celsius-link");
 celsiuslink.addEventListener("click", displaycelsiusTemperature);
 
 searchcity("Cartagena de Indias");
+displayForecast();
